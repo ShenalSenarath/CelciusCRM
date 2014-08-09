@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Celcius CRM- Home</title>
+	<h1> Hotel Details </h1>
+
+	<?php echo form_open('home/addHotel')>
+	<p>
+		<lable for="HotelName">Hotel Name: </lable>
+		<input type="text" name="HotelName" id="title" />
+	</p>
+	
+	<?php echo forom_close();>
+
+	
+	
+	
+</head>
+<body>
+
+
+</body>
+</html>
