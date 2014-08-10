@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class ContactsModel extends CI_Controller {
+class ContactsModel extends CI_Model {
 
 	function getAll(){
 		$query = $this->db->get('RoomDetails');
