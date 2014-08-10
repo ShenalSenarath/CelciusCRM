@@ -11,7 +11,7 @@ class HotelDetailsModel extends CI_Controller {
 		$this ->db->insert('HotelDetails',$HotelDetail);	
 	}
 
-	function updateHotel($id,$HotelDetails){
+	function updateHotel($id){
 		$this->db->where('ID',$id);
 		$this ->db->update('HotelDetails',$HotelDetails);	
 	}

@@ -1,0 +1,25 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+class HotelChainDetailsModel extends CI_Controller {
+
+	function getAll(){
+		$query = $this->db->get('HotelChainDetails');
+		return $query->result();	
+	}
+	
+	function addHotel($HotelChainDetail){
+		$this ->db->insert('HotelChainDetails',$HotelChainDetail);	
+	}
+
+	function updateHotel($id,$HotelChainDetail){
+		$this->db->where('ID',$id);
+		$this ->db->update('HotelChainDetails',$HotelChainDetail);	
+	}
+
+	function deleteHotel($id){
+		$this->db->where('ID',$id);
+		$this->db->delete('HotelChainDetails');
+	}
+
+}
+
