@@ -3,38 +3,50 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="B2B CRM for Celcius">
-    <meta name="author" content="">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="B2B CRM for Celcius">
+<meta name="author" content="">
 
-    <title>Celcius CRM - Home</title>
-	<style>
-	body{padding:0;margin:0;}
-	.myFloatBar{
-   	bottom:0;
-   	left:0;
-   	width:100%;
-   	position:fixed;
-  	 background-color:#eee;
-	}
-	</style>
-    <!-- Bootstrap Core CSS -->
-    <link href="<?php echo base_url();?>application/views/includes/css/bootstrap.min.css" rel="stylesheet">
+<title>Celcius CRM - Home</title>
+<style>
+body {
+	padding: 0;
+	margin: 0;
+}
 
-    <!-- MetisMenu CSS -->
-    <link href="<?php echo base_url();?>application/views/includes/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+.myFloatBar {
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	position: fixed;
+	background-color: #eee;
+}
+</style>
+<!-- Bootstrap Core CSS -->
+<link
+	href="<?php echo base_url();?>application/views/includes/css/bootstrap.min.css"
+	rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="<?php echo base_url();?>application/views/includes/css/sb-admin-2.css" rel="stylesheet">
+<!-- MetisMenu CSS -->
+<link
+	href="<?php echo base_url();?>application/views/includes/css/plugins/metisMenu/metisMenu.min.css"
+	rel="stylesheet">
 
-    <!-- Custom Fonts -->
-    <link href="<?php echo base_url();?>application/views/includes/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<!-- Custom CSS -->
+<link
+	href="<?php echo base_url();?>application/views/includes/css/sb-admin-2.css"
+	rel="stylesheet">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+<!-- Custom Fonts -->
+<link
+	href="<?php echo base_url();?>application/views/includes/font-awesome-4.1.0/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
@@ -43,149 +55,127 @@
 
 <body>
 
-    <div id="wrapper">
+	<div id="wrapper">
 
-        <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Celcius CRM</a>
-            </div>
-            <!-- /.navbar-header -->
+		<!-- Navigation -->
+		<nav class="navbar navbar-default navbar-static-top" role="navigation"
+			style="margin-bottom: 0">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">Celcius CRM</a>
+			</div>
+			<!-- /.navbar-header -->
 
-            <ul class="nav navbar-top-links navbar-right">
-                
-                
-                <!-- /.dropdown -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> username <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
-            </ul>
-            <!-- /.navbar-top-links -->
+			<ul class="nav navbar-top-links navbar-right">
 
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                       
-                        <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-link fa-fw"></i> Hotel Chains<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">View Hotel Chains</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Add Hotel Chains</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-			<li>
-                            <a href="#"><i class="fa fa-building fa-fw"></i> Hotels<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">View Hotels</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Add Hotels</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
 
-			<li>
-                            <a href="#"><i class="fa fa-cubes fa-fw"></i> Products<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">View Products</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Add Product</a>
-                                </li>
-				<li>
-                                    <a href="morris.html">Add Product Type</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
+				<!-- /.dropdown -->
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i>
+						username <i class="fa fa-caret-down"></i>
+				</a>
+					<ul class="dropdown-menu dropdown-user">
+						<li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+						</li>
+						<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
+						<li class="divider"></li>
+						<li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i>
+								Logout</a></li>
+					</ul> <!-- /.dropdown-user --></li>
+				<!-- /.dropdown -->
+			</ul>
+			<!-- /.navbar-top-links -->
 
-			<li>
-                            <a href="#"><i class="fa fa-users fa-fw"></i> Users<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">View Users</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Add Users</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        
-                      
-                        
-			
-                    </ul>
+			<div class="navbar-default sidebar" role="navigation">
+				<div class="sidebar-nav navbar-collapse">
+					<ul class="nav" id="side-menu">
 
-			
-                </div>
-                <!-- /.sidebar-collapse -->
-            </div>
-            <!-- /.navbar-static-side -->
-        </nav>
+						<li><a href="index.html"><i class="fa fa-dashboard fa-fw"></i>
+								Dashboard</a></li>
+						<li><a href="#"><i class="fa fa-link fa-fw"></i> Hotel Chains<span
+								class="fa arrow"></span></a>
+							<ul class="nav nav-second-level">
+								<li><a href="flot.html">View Hotel Chains</a></li>
+								<li><a href="morris.html">Add Hotel Chains</a></li>
+							</ul> <!-- /.nav-second-level --></li>
+						<li><a href="#"><i class="fa fa-building fa-fw"></i> Hotels<span
+								class="fa arrow"></span></a>
+							<ul class="nav nav-second-level">
+								<li><a href="flot.html">View Hotels</a></li>
+								<li><a href="morris.html">Add Hotels</a></li>
+							</ul> <!-- /.nav-second-level --></li>
 
-        <!-- Page Content -->
-        <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Blank</h1><?php echo base_url();?>
+						<li><a href="#"><i class="fa fa-cubes fa-fw"></i> Products<span
+								class="fa arrow"></span></a>
+							<ul class="nav nav-second-level">
+								<li><a href="flot.html">View Products</a></li>
+								<li><a href="morris.html">Add Product</a></li>
+								<li><a href="morris.html">Add Product Type</a></li>
+							</ul> <!-- /.nav-second-level --></li>
+
+						<li><a href="#"><i class="fa fa-users fa-fw"></i> Users<span
+								class="fa arrow"></span></a>
+							<ul class="nav nav-second-level">
+								<li><a href="flot.html">View Users</a></li>
+								<li><a href="morris.html">Add Users</a></li>
+							</ul> <!-- /.nav-second-level --></li>
+
+
+
+
+					</ul>
+
+
+				</div>
+				<!-- /.sidebar-collapse -->
+			</div>
+			<!-- /.navbar-static-side -->
+		</nav>
+
+		<!-- Page Content -->
+		<div id="page-wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">Blank</h1><?php echo base_url();?>
 			<!-- ?php $this->load->view($main_content); ? -->
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+			<!-- /.row -->
 
-        </div>
-        <!-- /#page-wrapper -->
-	
-	<div  class="myFloatBar">A system by<a href="mailto:shenalsenarath@gmail.com"> Shenal Senarath</a> for <a href="http://www.celciusbedding.com/">Celcius (Pvt) LTD</a></div>
-		
-    </div>
+		</div>
+		<!-- /#page-wrapper -->
+
+		<div class="myFloatBar">
+			A system by<a href="mailto:shenalsenarath@gmail.com"> Shenal Senarath</a>
+			for <a href="http://www.celciusbedding.com/">Celcius (Pvt) LTD</a>
+		</div>
+
+	</div>
 
 
-    <!-- /#wrapper -->
+	<!-- /#wrapper -->
 
-    <!-- jQuery Version 1.11.0 -->
-    <script src="<?php echo base_url();?>application/views/includes/js/jquery-1.11.0.js"></script>
+	<!-- jQuery Version 1.11.0 -->
+	<script
+		src="<?php echo base_url();?>application/views/includes/js/jquery-1.11.0.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="<?php echo base_url();?>application/views/includes/js/bootstrap.min.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script
+		src="<?php echo base_url();?>application/views/includes/js/bootstrap.min.js"></script>
 
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="<?php echo base_url();?>application/views/includes/js/plugins/metisMenu/metisMenu.min.js"></script>
+	<!-- Metis Menu Plugin JavaScript -->
+	<script
+		src="<?php echo base_url();?>application/views/includes/js/plugins/metisMenu/metisMenu.min.js"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="<?php echo base_url();?>application/views/includes/js/sb-admin-2.js"></script>
+	<!-- Custom Theme JavaScript -->
+	<script
+		src="<?php echo base_url();?>application/views/includes/js/sb-admin-2.js"></script>
 
 
 </body>
