@@ -1,5 +1,4 @@
 <?php
-
 if (! defined ( 'BASEPATH' ))
 	exit ( 'No direct script access allowed' );
 class ProductDetailsModel extends CI_Model {
@@ -17,6 +16,11 @@ class ProductDetailsModel extends CI_Model {
 	function deleteProduct($id) {
 		$this->db->where ( 'ID', $id );
 		$this->db->delete ( 'ProductDetails' );
+	}
+	function getByProductType($typeId) {
+		$this->db->where ( 'ProductType', $typeId );
+		$query = $this->db->get ( 'ProductDetails' );
+		return $query->result ();
 	}
 }
 
