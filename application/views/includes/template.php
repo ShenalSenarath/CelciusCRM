@@ -1,23 +1,6 @@
-<?php 
-	$headerData=array(
-		'title'=>$title,
-		'Username'=>$Username,
-	);
-	
-	$viewData=array(
-		'data'=>$data
-	);
-	
-	
+<?php
 	$this->load->view ( '/includes/header' );
-	$this->load->view ( $viewName, $viewData );
+	$this->load->view ( $viewName );
 	$this->load->view ( '/includes/footer' );
-
-
-
-
-
-
-
 ?>
 				

@@ -41,7 +41,7 @@
 							
 							<?php foreach ($data as $row):?>				
 							<tr>
-								<td><a href="hotelChains/view/<?php echo $row->ID ?>"php><?php echo $row->ChainName ?></a></td>
+								<td><?php echo anchor('hotelChains/view/'.$row->ID, $row->ChainName);?></td>
 								<td><?php echo $row->HeadOfficeAddress ?></td>
 
 
