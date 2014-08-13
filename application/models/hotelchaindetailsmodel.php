@@ -7,6 +7,11 @@ class HotelChainDetailsModel extends CI_Model {
 		$query = $this->db->get ( 'HotelChainDetails' );
 		return $query->result ();
 	}
+	function getHotelChain($id){
+		$this->db->where('ID',$id);
+		$query = $this->db->get ('HotelChainDetails');
+		return $query->result ();
+	}
 	function addHotelChain($HotelChainDetail) {
 		$this->db->insert ( 'HotelChainDetails', $HotelChainDetail );
 	}
