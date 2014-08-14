@@ -1,10 +1,13 @@
 <?php
-
 if (! defined ( 'BASEPATH' ))
 	exit ( 'No direct script access allowed' );
 class HotelDetailsModel extends CI_Model {
 	function getAll() {
-		$query = $this->db->get ( 'HotelDetails' );
+		$this->db->select ( 'HotelDetails.*,HotelDetails.ID as HID,HotelChainDetails.*' );
+		$this->db->from ( 'HotelDetails' );
+		$this->db->join ( 'HotelChainDetails', 'HotelDetails.HotelChainID=HotelChainDetails.ID', 'left outer' );
+		
+		$query = $this->db->get ();
 		return $query->result ();
 	}
 	function addHotel($HotelDetail) {
@@ -28,6 +31,5 @@ class HotelDetailsModel extends CI_Model {
 		$query = $this->db->get ( 'HotelDetails' );
 		return $query->result ();
 	}
-	
 }
 

@@ -29,55 +29,17 @@
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h4>Head Office Address : </h4> <?php echo $chainDetails[0]->HeadOfficeAddress;?>
+					<h4>Address : </h4> <?php echo $hotelDetails[0]->Address;?>
 				</div>
 			</div>
 		</div>
 	</div>
    
-<div class="row">
-	<div class="col-lg-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">Member Hotels</div>
-			<!-- /.panel-heading -->
-			<div class="panel-body">
-				<div class="table-responsive">
-					<table class="table table-striped table-bordered table-hover"
-						id="dataTables-hotels">
-						<thead>
-							<tr>
-								<th>Hotel Name</th>
-								<th>Address</th>
-
-							</tr>
-						</thead>
-						<tbody>
-							
-							<?php foreach ($hotels as $row):?>				
-							<tr>
-								<td><?php echo anchor('hotels/view/'.$row->ID, $row->HotelName, "title=".$row->HotelName);?></td>
-								<td><?php echo $row->Address ?></td>
-
-
-							</tr>
-							<?php endforeach;?>
-						</tbody>
-					</table>
-				</div>
-				<!-- /.table-responsive -->
-			</div>
-			<!-- /.panel-body -->
-		</div>
-		<!-- /.panel -->
-	</div>
-	<!-- /.col-lg-12 -->
-</div>
-<!-- /.row -->
 
 <div class="row">
 	<div class="col-lg-12">
 		<div class="panel panel-default">
-			<div class="panel-heading">Contacts from <?php echo $chainDetails[0]->ChainName?></div>
+			<div class="panel-heading">Contacts from <?php echo $hotelDetails[0]->HotelName?></div>
 			<!-- /.panel-heading -->
 			<div class="panel-body">
 				<div class="table-responsive">
@@ -86,7 +48,6 @@
 						<thead>
 							<tr>
 								<th>Position</th>
-								<th>Hotel Name</th>
 								<th>Name</th>								
 								<th>E-mail</th>
 								<th>Office Number</th>
@@ -100,7 +61,7 @@
 							<?php foreach ($contacts as $row):?>				
 							<tr>
 								<td><?php echo $row->Position ?></td>
-								<td><?php echo anchor('hotel/view/'.$row->ID, $row->HotelName, "title=".$row->HotelName);?></td>
+								
 								<td><?php echo anchor('contacts/view/'.$row->ID, $row->Name, "title=".$row->Position);?></td>
 								<td><?php echo $row->Email ?></td>
 								<td><?php echo $row->OfficeNumber ?></td>

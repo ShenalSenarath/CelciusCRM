@@ -37,6 +37,6 @@ class HotelChains extends CI_Controller {
 				'viewName' => "hotelchain_view" 
 		);
 		$this->load->view ( '/includes/template', $templateData );
-		// print_r($templateData);
+		
 	}
 }

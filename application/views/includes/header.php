@@ -125,7 +125,7 @@ body {
 						<li><a href="#"><i class="fa fa-building fa-fw"></i> Hotels<span
 								class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
-								<li><a href="flot.html">View Hotels</a></li>
+								<li><?php echo anchor('hotels/', 'View Hotels');?></li>
 								<li><a href="morris.html">Add Hotels</a></li>
 							</ul> <!-- /.nav-second-level --></li>
 
