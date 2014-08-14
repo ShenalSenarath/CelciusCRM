@@ -2,6 +2,7 @@
 if (! defined ( 'BASEPATH' ))
 	exit ( 'No direct script access allowed' );
 class HotelChains extends CI_Controller {
+	
 	function index() {
 		$this->load->model ( 'hotelchaindetailsmodel' );
 		$allHotelChains = $this->hotelchaindetailsmodel->getAll ();
@@ -15,6 +16,7 @@ class HotelChains extends CI_Controller {
 		
 		$this->load->view ( '/includes/template', $templateData );
 	}
+	
 	function view($ChainID) {
 		$this->load->model ( 'hotelchaindetailsmodel' );
 		$this->load->model ( 'hoteldetailsmodel' );
@@ -23,6 +25,8 @@ class HotelChains extends CI_Controller {
 		$hotelChainDetails = $this->hotelchaindetailsmodel->getHotelChain ( $ChainID );
 		$hotelsByChain = $this->hoteldetailsmodel->getHotelByHotelChain ( $ChainID );
 		$contactsByChain = $this->contactsmodel->getContactsByHotelChain ( $ChainID );
+		
+		
 		$templateData = array (
 				
 				'chainDetails' => $hotelChainDetails,

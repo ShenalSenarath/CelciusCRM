@@ -25,8 +25,12 @@ class ContactsModel extends CI_Model {
 		
 	}
 	function getContactsByHotelChain($chainID){
+		
 		$this->db->where("ChainID",$chainID);
-		$query = $this->db->get ( 'ContactsDetails' );
+		$this->db->from ( 'ContactsDetails' );
+		$this->db->join ('HotelDetails', 'HotelDetails.ID = ContactsDetails.HotelID');
+		
+		$query = $this->db->get ();
 		return $query->result ();
 	
 	}

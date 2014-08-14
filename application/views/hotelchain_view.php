@@ -99,10 +99,13 @@
 							
 							<?php foreach ($contacts as $row):?>				
 							<tr>
-								<td><?php echo anchor('contacts/view/'.$row->ID, $row->Name, "title=".$row->HotelName);?></td>
-								<td><?php echo $row->Address ?></td>
-
-
+								<td><?php echo $row->Position ?></td>
+								<td><?php echo anchor('hotel/view/'.$row->ID, $row->HotelName, "title=".$row->HotelName);?></td>
+								<td><?php echo anchor('contacts/view/'.$row->ID, $row->Name, "title=".$row->Position);?></td>
+								<td><?php echo $row->Email ?></td>
+								<td><?php echo $row->OfficeNumber ?></td>
+								<td><?php echo $row->MobileNumber ?></td>
+								<td><?php echo $row->LastEdited ?></td>
 							</tr>
 							<?php endforeach;?>
 						</tbody>
