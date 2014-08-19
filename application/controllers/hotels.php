@@ -1,7 +1,15 @@
 <?php
 if (! defined ( 'BASEPATH' ))
 	exit ( 'No direct script access allowed' );
+/**
+ * @author Shenal Senarath
+ *
+ *This controller will be used to hotel related operations
+ */
 class Hotels extends CI_Controller {
+	/**
+	 * Views all the hotels in the system
+	 */
 	function index() {
 		$this->load->model ( 'hoteldetailsmodel' );
 		$allHotels = $this->hoteldetailsmodel->getAll ();
@@ -16,6 +24,10 @@ class Hotels extends CI_Controller {
 		$this->load->view ( '/includes/template', $templateData );
 	}
 	
+	/**
+	 * View the details of the hotel given by the $HotelID
+	 * @param int $HotelID
+	 */
 	function view($HotelID) {
 		$this->load->model ( 'hoteldetailsmodel' );
 		$this->load->model ( 'contactsmodel' );
