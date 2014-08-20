@@ -9,6 +9,7 @@ class ProductTypesModel extends CI_Model {
 	}
 	function addProductType($ProductType) {
 		$this->db->insert ( 'ProductTypes', $ProductType );
+		return $this->db->insert_id();
 	}
 	function updateProductType($id, $ProductType) {
 		$this->db->where ( 'ID', $id );

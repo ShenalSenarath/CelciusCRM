@@ -69,11 +69,11 @@ body {
 	<!-- Custom Theme JavaScript -->
 	<script
 		src="<?php echo base_url();?>application/views/includes/js/sb-admin-2.js"></script>
-		
-		
-		
-	
-		
+
+
+
+
+
 	<div id="wrapper">
 
 		<!-- Navigation -->
@@ -134,7 +134,7 @@ body {
 							<ul class="nav nav-second-level">
 								<li><a href="flot.html">View Products</a></li>
 								<li><a href="morris.html">Add Product</a></li>
-								<li><a href="morris.html">Add Product Type</a></li>
+								<li><?php echo anchor('productTypes/add', 'Add Product Type');?></li>
 							</ul> <!-- /.nav-second-level --></li>
 
 						<li><a href="#"><i class="fa fa-users fa-fw"></i> Users<span
