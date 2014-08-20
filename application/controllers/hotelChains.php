@@ -64,7 +64,7 @@ class HotelChains extends CI_Controller {
 		
 		$templateData = array (
 
-				'title' => "Add new Hotel Chain",
+				'title' => "Add New Hotel Chain",
 				'Username' => "HardCodedUser",
 				'viewName' => "addHotelChain_view" 
 		);

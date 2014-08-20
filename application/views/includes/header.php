@@ -120,13 +120,13 @@ body {
 								class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
 								<li><?php echo anchor('hotelChains/', 'View Hotel Chains');?></li>
-								<li><a href="morris.html">Add Hotel Chains</a></li>
+								<li><?php echo anchor('hotelChains/add', 'Add Hotel Chain');?></li>
 							</ul> <!-- /.nav-second-level --></li>
 						<li><a href="#"><i class="fa fa-building fa-fw"></i> Hotels<span
 								class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
 								<li><?php echo anchor('hotels/', 'View Hotels');?></li>
-								<li><a href="morris.html">Add Hotels</a></li>
+								<li><?php echo anchor('hotels/add', 'Add Hotel');?></li>
 							</ul> <!-- /.nav-second-level --></li>
 
 						<li><a href="#"><i class="fa fa-cubes fa-fw"></i> Products<span

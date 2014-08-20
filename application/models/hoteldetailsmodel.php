@@ -30,6 +30,7 @@ class HotelDetailsModel extends CI_Model {
 	 */
 	function addHotel($HotelDetail) {
 		$this->db->insert ( 'HotelDetails', $HotelDetail );
+		return $this->db->insert_id();
 	}
 	/**
 	 * Updates hotel record with the given $id
