@@ -133,10 +133,15 @@ body {
 								class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
 								<li><a href="flot.html">View Products</a></li>
-								<li><a href="morris.html">Add Product</a></li>
+								<li><?php echo anchor('products/add', 'Add Product');?></li>
 								<li><?php echo anchor('productTypes/add', 'Add Product Type');?></li>
 							</ul> <!-- /.nav-second-level --></li>
-
+						<li><a href="#"><i class="fa fa-phone-square fa-fw"></i> Contacts<span
+								class="fa arrow"></span></a>
+							<ul class="nav nav-second-level">
+								<li><a href="flot.html">View Contacts</a></li>
+								<li><a href="morris.html">Add Contact</a></li>
+							</ul> <!-- /.nav-second-level --></li>
 						<li><a href="#"><i class="fa fa-users fa-fw"></i> Users<span
 								class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">

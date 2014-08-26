@@ -8,6 +8,7 @@ class ProductDetailsModel extends CI_Model {
 	}
 	function addProduct($ProductDetail) {
 		$this->db->insert ( 'ProductDetails', $ProductDetail );
+		return $this->db->insert_id();
 	}
 	function updateProduct($id, $ProductDetail) {
 		$this->db->where ( 'ID', $id );
