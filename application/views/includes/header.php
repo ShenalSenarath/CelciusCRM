@@ -132,7 +132,7 @@ body {
 						<li><a href="#"><i class="fa fa-cubes fa-fw"></i> Products<span
 								class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
-								<li><a href="flot.html">View Products</a></li>
+								<li><?php echo anchor('products', 'View Products');?></li>
 								<li><?php echo anchor('products/add', 'Add Product');?></li>
 								<li><?php echo anchor('productTypes/add', 'Add Product Type');?></li>
 							</ul> <!-- /.nav-second-level --></li>

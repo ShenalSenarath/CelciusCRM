@@ -3,6 +3,26 @@ if (! defined ( 'BASEPATH' ))
 	exit ( 'No direct script access allowed' );
 class Products extends CI_Controller {
 	
+	function index() {
+		$this->load->model('producttypesmodel');
+		$this->load->model('productdetailsmodel');
+		
+		$productTypes=$this->producttypesmodel->getAll();
+		$productDetails=$this->productdetailsmodel->getAll();
+		
+		
+		$templateData = array (
+				'productTypes'=>$productTypes,
+				'productDetails'=>$productDetails,
+				'title' => "Products",
+				'Username' => "HardCodedUser",
+				'viewName' => "product_view"
+		);
+		
+		$this->load->view ( '/includes/template', $templateData );
+		
+	}
+	
 	function add() {
 		$this->load->library ( 'form_validation' );
 		
