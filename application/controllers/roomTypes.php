@@ -1,0 +1,45 @@
+<?php
+if (! defined ( 'BASEPATH' ))
+	exit ( 'No direct script access allowed' );
+/**
+ *
+ * @author Shenal Senarath
+ *        
+ *         This controller will be used to contacts related operations
+ */
+class RoomTypes extends CI_Controller {
+	function add($HotelID) {
+		$this->load->library ( 'form_validation' );
+		
+		$this->form_validation->set_rules ( 'RoomType', 'Room Type', 'trim|required' );
+		$this->form_validation->set_rules ( 'Count', 'Count', 'trim|required|is_natural' );
+		
+		$this->load->model ( 'hoteldetailsmodel' );
+		$hotelDetails = $this->hoteldetailsmodel->getHotel ( $HotelID );
+		
+		$templateData = array (
+				
+				'hotelDetails' => $hotelDetails,
+				'title' => "Add Room type - " . ($hotelDetails [0]->HotelName),
+				'Username' => "HardCodedUser",
+				'viewName' => "addRoomType_view" 
+		);
+		
+		if ($this->form_validation->run () == FALSE) {
+			$this->load->view ( '/includes/template', $templateData );
+		} 
+
+		else {
+			
+			$this->load->model ( 'roomdetailsmodel' );
+			
+			$RoomTypeDetails = $this->input->post ();
+			
+			if ($insertedID = $this->roomdetailsmodel->addRoom ( $RoomTypeDetails )) {
+				redirect ( '/roomTypes/view/' . $insertedID, 'refresh' );
+			} else {
+				$this->load->view ( '/includes/template', $templateData );
+			}
+		}
+	}
+}
