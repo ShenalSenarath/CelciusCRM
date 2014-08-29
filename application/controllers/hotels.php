@@ -31,14 +31,17 @@ class Hotels extends CI_Controller {
 	function view($HotelID) {
 		$this->load->model ( 'hoteldetailsmodel' );
 		$this->load->model ( 'contactsmodel' );
+		$this->load->model ( 'roomdetailsmodel' );
 		
 		$hotelDetails = $this->hoteldetailsmodel->getHotel ( $HotelID );
 		$contactsByHotel = $this->contactsmodel->getContactsByHotel ( $HotelID );
+		$roomTypesByHotel=$this->roomdetailsmodel->getRoomTypesByHotel($HotelID);
 		
 		 
 		$templateData = array (
 				
 				'hotelDetails' => $hotelDetails,
+				'roomTypes'=>$roomTypesByHotel,
 				'contacts' => $contactsByHotel,
 				'title' => ($hotelDetails [0]->HotelName) . " - Hotel",
 				'Username' => "HardCodedUser",

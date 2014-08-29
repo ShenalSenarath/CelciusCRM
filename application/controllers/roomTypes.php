@@ -8,6 +8,32 @@ if (! defined ( 'BASEPATH' ))
  *         This controller will be used to contacts related operations
  */
 class RoomTypes extends CI_Controller {
+	function view($roomTypeID) {
+		$this->load->model ( 'hoteldetailsmodel' );
+		$this->load->model ( 'productTypesmodel' );
+		$this->load->model ( 'roomdetailsmodel' );
+	
+		$roomTypeDetails=$this->roomdetailsmodel->getRoomTypeDetails($roomTypeID);
+		$productTypes=$this->productTypesmodel->getall();
+		$hotelDetails = $this->hoteldetailsmodel->getHotel ( $roomTypeDetails[0]->HotelID );
+		$productsOfRoom=$this->roomdetailsmodel->getProductsByRoomType($roomTypeID);
+		
+		
+		
+		$templateData = array (
+				
+				'hotelDetails' => $hotelDetails,
+				'roomTypeDetails' =>$roomTypeDetails,
+				'roomProducts' => $productsOfRoom,
+				'productTypes'=>$productTypes,
+				'title' => ($roomTypeDetails [0]->RoomType) ." - ".($hotelDetails[0]->HotelName) ." Hotel",
+				'Username' => "HardCodedUser",
+				'viewName' => "roomtype_view" 
+		);
+		$this->load->view ( '/includes/template', $templateData );
+	}
+	
+	
 	function add($HotelID) {
 		$this->load->library ( 'form_validation' );
 		
