@@ -4,17 +4,17 @@ if (! defined ( 'BASEPATH' ))
 	exit ( 'No direct script access allowed' );
 class Home extends CI_Controller {
 	public function index() {
-		$this->load->view ( 'home_view' );
-	}
-	public function addHotel() {
-		$data = array (
-				'HotelName' => $this->input->post ( 'HotelName' ),
-				'Address' => $this->input->post ( 'Address' ) 
+		$templateData = array (
+		
+				
+				'title' => "Home",
+				'Username' => "HardCodedUser",
+				'viewName' => "home_view"
 		);
-		$this->load->model ( 'hoteldetailsmodel' );
-		$this->hoteldetailsmodel->addHotel ( $data );
-		$this->index ();
+		$this->load->view ( '/includes/template', $templateData );
+	
 	}
+	
 }
 
 
