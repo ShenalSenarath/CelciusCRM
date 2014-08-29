@@ -22,7 +22,18 @@
 				<div class="panel-heading">
 					<h4>Welcome </h4>
 					<div class="panel-body">
-					Welcome to the B2B CRM of Celcius Luxury Bedding (Pvt) Ltd 
+					Welcome to the B2B CRM of Celcius Luxury Bedding (Pvt) Ltd
+					<br>
+					<br>
+					In this version of the System you can:
+					<br>
+					&nbsp <i class="fa fa-angle-double-right"></i> Add Hotel Chains<br>
+					&nbsp <i class="fa fa-angle-double-right"></i> Add Hotels<br>
+					&nbsp <i class="fa fa-angle-double-right"></i> Add Product Types<br>
+					&nbsp <i class="fa fa-angle-double-right"></i> Add Products<br>
+					&nbsp <i class="fa fa-angle-double-right"></i> Add Hotel Chains<br>
+						
+					
 					</div>
 				</div>
 			</div>

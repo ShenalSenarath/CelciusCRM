@@ -2,18 +2,18 @@
 if (! defined ( 'BASEPATH' ))
 	exit ( 'No direct script access allowed' );
 /**
- * @author Shenal Senarath
  *
- *This controller will be used to contacts related operations
+ * @author Shenal Senarath
+ *        
+ *         This controller will be used to contacts related operations
  */
 class Contacts extends CI_Controller {
 	/**
 	 * Views all the contacts in the system
 	 */
 	function index() {
-		
 		$this->load->model ( 'contactsmodel' );
-	
+		
 		$allContacts = $this->contactsmodel->getAll ();
 		
 		$templateData = array (
@@ -28,7 +28,8 @@ class Contacts extends CI_Controller {
 	
 	/**
 	 * View the details of the hotel given by the $HotelID
-	 * @param int $HotelID
+	 * 
+	 * @param int $HotelID        	
 	 */
 	function view($HotelID) {
 		$this->load->model ( 'hoteldetailsmodel' );
@@ -37,7 +38,6 @@ class Contacts extends CI_Controller {
 		$hotelDetails = $this->hoteldetailsmodel->getHotel ( $HotelID );
 		$contactsByHotel = $this->contactsmodel->getContactsByHotel ( $HotelID );
 		
-		 
 		$templateData = array (
 				
 				'hotelDetails' => $hotelDetails,
@@ -48,53 +48,67 @@ class Contacts extends CI_Controller {
 		);
 		$this->load->view ( '/includes/template', $templateData );
 	}
-	
 	function add() {
-		
 		$this->load->library ( 'form_validation' );
-	
-		$this->form_validation->set_rules ( 'HotelName', 'Hotel Name', 'trim|required' );
-		$this->form_validation->set_rules ( 'Address', 'Address', 'trim|required' );
 		
-		$this->load->model('hotelChaindetailsmodel');
-		$HotelChainDetails= $this->hotelChaindetailsmodel->getAll();
+		$this->form_validation->set_rules ( 'Position', 'Position', 'trim|required' );
+		$this->form_validation->set_rules ( 'Name', 'Name', 'trim|required' );
+		$this->form_validation->set_rules ( 'Email', 'E-mail', 'trim|valid_email' );
+		$this->form_validation->set_rules ( 'OfficeNumber', 'Office Number', 'trim' );
+		$this->form_validation->set_rules ( 'MobileNumber', 'Mobile Number', 'trim' );
 		
-		$dropdownData = array();
-		$dropdownData[NULL]='No Hotel Chain';
-		foreach ($HotelChainDetails as $chain ){
-			$dropdownData[$chain->ID] = $chain->ChainName;
+		$this->load->model ( 'hotelchaindetailsmodel' );
+		$hotelChains = $this->hotelchaindetailsmodel->getAll ();
+			
+		$hotelChaindropdownData = array ();
+		$hotelChaindropdownData[NULL]='Not in a Hotel Chain';
+		foreach ( $hotelChains as $chain ) {
+			$hotelChaindropdownData [$chain->ID] = $chain->ChainName;
 		}
 		
-	
+		$this->load->model ( 'hoteldetailsmodel' );
+		$hotels = $this->hoteldetailsmodel->getAll ();
+		
+		$hoteldropdownData = array ();
+		$hoteldropdownData[NULL]='No Hotel (Head Office)';
+		
+		foreach ( $hotels as $hotel ) {
+			$hoteldropdownData [$hotel->HID] = $hotel->HotelName;
+		}
+		
 		$templateData = array (
-				'dropdown'=>$dropdownData,
-				'title' => "Add New Hotel",
+				'chainDropdown' => $hotelChaindropdownData,
+				'hotelDropdown' => $hoteldropdownData,
+				'title' => "Add New Product",
 				'Username' => "HardCodedUser",
-				'viewName' => "addHotel_view"
+				'viewName' => "addContact_view" 
 		);
-	
-	
-	
+		
 		if ($this->form_validation->run () == FALSE) {
 			$this->load->view ( '/includes/template', $templateData );
-		}
-	
+		} 
+
 		else {
-			$this->load->model ( 'hoteldetailsmodel' );
+			
+			$this->load->model ( 'contactsmodel' );
+			
+			$ContactDetails = $this->input->post ();
+			
+			foreach ($ContactDetails as $key=>$field){
+				if (empty($field)){
+					
+					unset($ContactDetails[$key]);
+				}
 				
-			$HotelDetail=array(
-					'HotelName'=>$this->input->post('HotelName'),
-					'Address'=>$this->input->post('Address'),
-					'HotelChainID'=>$this->input->post('HotelChainID')
-			);
-			if ($insetedID = $this->hoteldetailsmodel->addHotel ( $HotelDetail )) {
-				redirect('/hotels/view/'.$insetedID, 'refresh');
-	
 			}
-			else {
+			
+			print_r($ContactDetails);
+			
+			if ($insertedID = $this->contactsmodel->addContact($ContactDetails)) {
+				redirect ( '/contacts', 'refresh' );
+			} else {
 				$this->load->view ( '/includes/template', $templateData );
 			}
-				
 		}
 	}
 }

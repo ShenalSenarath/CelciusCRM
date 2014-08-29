@@ -48,6 +48,7 @@ class ContactsModel extends CI_Model {
 	
 	function addContact($ContactDetails) {
 		$this->db->insert ( 'ContactsDetails', $ContactDetails );
+		return $this->db->insert_id();
 	}
 	/**
 	 * Update Contact details record of the given $id

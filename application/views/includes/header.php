@@ -114,18 +114,18 @@ body {
 				<div class="sidebar-nav navbar-collapse">
 					<ul class="nav" id="side-menu">
 
-						<li><?php echo anchor('home/', '<i class="fa fa-home fa-fw"></i> Home');?>
+						<li><?php echo anchor('home', '<i class="fa fa-home fa-fw"></i> Home');?>
 						</li>
 						<li><a href="#"><i class="fa fa-link fa-fw"></i> Hotel Chains<span
 								class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
-								<li><?php echo anchor('hotelChains/', 'View Hotel Chains');?></li>
+								<li><?php echo anchor('hotelChains', 'View Hotel Chains');?></li>
 								<li><?php echo anchor('hotelChains/add', 'Add Hotel Chain');?></li>
 							</ul> <!-- /.nav-second-level --></li>
 						<li><a href="#"><i class="fa fa-building fa-fw"></i> Hotels<span
 								class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
-								<li><?php echo anchor('hotels/', 'View Hotels');?></li>
+								<li><?php echo anchor('hotels', 'View Hotels');?></li>
 								<li><?php echo anchor('hotels/add', 'Add Hotel');?></li>
 							</ul> <!-- /.nav-second-level --></li>
 
@@ -140,7 +140,7 @@ body {
 								class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
 								<li><?php echo anchor('contacts', 'View Contacts');?></li>
-								<li><a href="morris.html">Add Contact</a></li>
+								<li><?php echo anchor('contacts/add', 'Add Contact');?></li>
 							</ul> <!-- /.nav-second-level --></li>
 						<li><a href="#"><i class="fa fa-users fa-fw"></i> Users<span
 								class="fa arrow"></span></a>
