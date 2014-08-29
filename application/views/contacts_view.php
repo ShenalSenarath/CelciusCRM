@@ -15,48 +15,62 @@
     <script src="<?php echo base_url();?>application/views/includes/js/sb-admin-2.js"></script>
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-   
-
-
-<?php foreach ($productTypes as $type):?> 
- <script>
-    $(document).ready(function() {
-        $('#dataTables-<?php echo trim($type->ProductType) ?>').dataTable();
-    });
-    </script>  
     
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-contacts').dataTable();
+    });
+    </script>
+
+
 <div class="row">
 	<div class="col-lg-12">
 		<div class="panel panel-default">
-			<div class="panel-heading"><?php echo $type->ProductType ?></div>
+			<div class="panel-heading">All Contacts</div>
 			<!-- /.panel-heading -->
 			<div class="panel-body">
 				<div class="table-responsive">
 					<table class="table table-striped table-bordered table-hover"
-						id="dataTables-<?php  echo trim($type->ProductType," ") ?>">
+						id="dataTables-contacts">
 						<thead>
 							<tr>
-								<th>Name</th>
-								<th>Size</th>
-								<th>Material</th>
-								<th>Tread Count</th>
+								<th>Position</th>
+								<th>Name</th>								
+								<th>E-mail</th>
+								<th>Hotel</th>
+								<th>Hotel Chain</th>
+								<th>Office Number</th>
+								<th>Mobile Number</th>
+								
 
 							</tr>
 						</thead>
 						<tbody>
 							
-							<?php foreach ($productDetails as $product):?>
-								<?php if ($type->ID==$product->ProductType) :?>				
-									<tr>
-				
-										<td><?php echo $product->ProductName ?></td>
-										<td><?php echo $product->Size ?></td>
-										<td><?php echo $product->Material ?></td>
-										<td><?php echo $product->ThreadCount ?></td>
-		
-									</tr>
-								<?php endif ?>	
-							<?php  endforeach;?>
+							<?php foreach ($contacts as $row):?>				
+							<tr>
+								<td><?php echo $row->Position ?></td>
+								
+								<td><?php echo anchor('contacts/view/'.$row->ID, $row->Name, "title=".$row->Position);?></td>
+								<td><?php echo $row->Email ?></td>
+								<td><?php if ($row->HID){
+											echo anchor('hotels/view/'.$row->HID, $row->HotelName,"title= view ".$row->HotelName);
+											} 
+											else echo 'None';
+								
+								?></td>
+								<td><?php if ($row->HCID){
+											echo anchor('hotels/view/'.$row->HCID, $row->ChainName,"title= view ".$row->ChainName);
+											} 
+											else echo 'None';
+								
+								?></td>
+								
+								<td><?php echo $row->OfficeNumber ?></td>
+								<td><?php echo $row->MobileNumber ?></td>
+								
+							</tr>
+							<?php endforeach;?>
 						</tbody>
 					</table>
 				</div>
@@ -69,9 +83,6 @@
 	<!-- /.col-lg-12 -->
 </div>
 <!-- /.row -->
-
-<?php endforeach;?>
-
 
 
 

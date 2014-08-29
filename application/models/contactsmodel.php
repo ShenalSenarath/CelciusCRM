@@ -17,9 +17,22 @@ class ContactsModel extends CI_Model {
 	 * Returns all the contact records
 	 */
 	function getAll() {
-		$query = $this->db->get ( 'ContactsDetails' );
+	
+		$this->db->select ( '
+				ContactsDetails.*,
+				ContactsDetails.ID as CID,
+				HotelDetails.ID as HID,
+				HotelDetails.HotelName,
+				HotelChainDetails.ID as HCID,
+				HotelChainDetails.ChainName
+				');//A work around to ID replacing problem in CI Active Records
+		$this->db->from ( 'ContactsDetails' );
+		$this->db->join ( 'HotelDetails', 'ContactsDetails.HotelID=HotelDetails.ID', 'left outer' );//Joined to add details about the hotel's mother chain
+		$this->db->join ( 'HotelChainDetails', 'ContactsDetails.ChainID=HotelChainDetails.ID', 'left outer' );
+		$query = $this->db->get ();
 		return $query->result ();
 	}
+	
 	/**
 	 * Add new Contact Record 
 	 * @param array $ContactDetails {

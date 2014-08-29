@@ -114,8 +114,8 @@ body {
 				<div class="sidebar-nav navbar-collapse">
 					<ul class="nav" id="side-menu">
 
-						<li><a href="index.html"><i class="fa fa-dashboard fa-fw"></i>
-								Dashboard</a></li>
+						<li><?php echo anchor('home/', '<i class="fa fa-home fa-fw"></i> Home');?>
+						</li>
 						<li><a href="#"><i class="fa fa-link fa-fw"></i> Hotel Chains<span
 								class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
@@ -139,7 +139,7 @@ body {
 						<li><a href="#"><i class="fa fa-phone-square fa-fw"></i> Contacts<span
 								class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
-								<li><a href="flot.html">View Contacts</a></li>
+								<li><?php echo anchor('contacts', 'View Contacts');?></li>
 								<li><a href="morris.html">Add Contact</a></li>
 							</ul> <!-- /.nav-second-level --></li>
 						<li><a href="#"><i class="fa fa-users fa-fw"></i> Users<span
