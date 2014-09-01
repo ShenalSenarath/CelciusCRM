@@ -4,6 +4,11 @@ if (! defined ( 'BASEPATH' ))
 	exit ( 'No direct script access allowed' );
 class ProductTypesModel extends CI_Model {
 	function getAll() {
+		$query = $this->db->get ( 'ProductTypes' ); 
+		return $query->result ();
+	}
+	function getProductypeDetails($ID) {
+		$this->db->where("ID",$ID);
 		$query = $this->db->get ( 'ProductTypes' );
 		return $query->result ();
 	}

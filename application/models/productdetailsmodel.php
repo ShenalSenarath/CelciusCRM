@@ -6,6 +6,11 @@ class ProductDetailsModel extends CI_Model {
 		$query = $this->db->get ( 'ProductDetails' );
 		return $query->result ();
 	}
+	function getProductsByType($TypeID) {
+		$this->db->where("ProductType",$TypeID);
+		$query = $this->db->get ( 'ProductDetails' );
+		return $query->result ();
+	}
 	function addProduct($ProductDetail) {
 		$this->db->insert ( 'ProductDetails', $ProductDetail );
 		return $this->db->insert_id();

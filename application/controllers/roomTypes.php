@@ -19,7 +19,6 @@ class RoomTypes extends CI_Controller {
 		$productsOfRoom=$this->roomdetailsmodel->getProductsByRoomType($roomTypeID);
 		
 		
-		
 		$templateData = array (
 				
 				'hotelDetails' => $hotelDetails,
@@ -30,6 +29,7 @@ class RoomTypes extends CI_Controller {
 				'Username' => "HardCodedUser",
 				'viewName' => "roomtype_view" 
 		);
+		
 		$this->load->view ( '/includes/template', $templateData );
 	}
 	

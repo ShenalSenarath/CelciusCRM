@@ -47,5 +47,9 @@ class RoomDetailsModel extends CI_Model {
 		$this->db->where ( 'ID', $id );
 		$this->db->delete ( 'RoomDetails' );
 	}
+	function addRoomProduct($RoomProductDetails){
+		$this->db->insert ( 'RoomProductDetails', $RoomProductDetails );
+		return $this->db->insert_id();
+	}
 }
 

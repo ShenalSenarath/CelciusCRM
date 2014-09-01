@@ -30,7 +30,7 @@
 <div class="row">
 	<div class="col-lg-12">
 		<div class="panel panel-default">
-			<div class="panel-heading">Type -<?php echo $type->ProductType ?></div>
+			<div class="panel-heading">Type -<?php echo $type->ProductType ?> <?php echo anchor('roomProducts/add/'.($roomTypeDetails[0]->ID).'/'.($type->ID), '<i class="fa fa-plus-square"></i>', 'style="float:right" title="Add '.($type->ProductType).'"'); ?></div>
 			<!-- /.panel-heading -->
 			<div class="panel-body">
 				<div class="table-responsive">
