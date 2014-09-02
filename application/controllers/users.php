@@ -5,9 +5,9 @@ if (! defined ( 'BASEPATH' ))
  *
  * @author Shenal Senarath
  *        
- *         This controller will be used to contacts related operations
+ *         This controller will be used to user details related operations
  */
-class Contacts extends CI_Controller {
+class Users extends CI_Controller {
 	/**
 	 * Views all the contacts in the system
 	 */
