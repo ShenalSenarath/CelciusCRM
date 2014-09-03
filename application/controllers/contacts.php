@@ -102,7 +102,7 @@ class Contacts extends CI_Controller {
 				
 			}
 			
-			print_r($ContactDetails);
+			
 			
 			if ($insertedID = $this->contactsmodel->addContact($ContactDetails)) {
 				redirect ( '/contacts', 'refresh' );

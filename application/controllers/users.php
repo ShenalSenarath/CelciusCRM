@@ -12,15 +12,15 @@ class Users extends CI_Controller {
 	 * Views all the contacts in the system
 	 */
 	function index() {
-		$this->load->model ( 'contactsmodel' );
+		$this->load->model ( 'usersmodel' );
 		
-		$allContacts = $this->contactsmodel->getAll ();
+		$allUsers = $this->usersmodel->getAll ();
 		
 		$templateData = array (
-				'contacts' => $allContacts,
-				'title' => "Contacts",
+				'users' => $allUsers,
+				'title' => "Users",
 				'Username' => "HardCodedUser",
-				'viewName' => "contacts_view" 
+				'viewName' => "users_view" 
 		);
 		
 		$this->load->view ( '/includes/template', $templateData );
@@ -51,37 +51,15 @@ class Users extends CI_Controller {
 	function add() {
 		$this->load->library ( 'form_validation' );
 		
-		$this->form_validation->set_rules ( 'Position', 'Position', 'trim|required' );
-		$this->form_validation->set_rules ( 'Name', 'Name', 'trim|required' );
-		$this->form_validation->set_rules ( 'Email', 'E-mail', 'trim|valid_email' );
-		$this->form_validation->set_rules ( 'OfficeNumber', 'Office Number', 'trim' );
-		$this->form_validation->set_rules ( 'MobileNumber', 'Mobile Number', 'trim' );
-		
-		$this->load->model ( 'hotelchaindetailsmodel' );
-		$hotelChains = $this->hotelchaindetailsmodel->getAll ();
-			
-		$hotelChaindropdownData = array ();
-		$hotelChaindropdownData[NULL]='Not in a Hotel Chain';
-		foreach ( $hotelChains as $chain ) {
-			$hotelChaindropdownData [$chain->ID] = $chain->ChainName;
-		}
-		
-		$this->load->model ( 'hoteldetailsmodel' );
-		$hotels = $this->hoteldetailsmodel->getAll ();
-		
-		$hoteldropdownData = array ();
-		$hoteldropdownData[NULL]='No Hotel (Head Office)';
-		
-		foreach ( $hotels as $hotel ) {
-			$hoteldropdownData [$hotel->HID] = $hotel->HotelName;
-		}
+		$this->form_validation->set_rules ( 'Username', 'Username', 'trim|required|alpha_dash|is_unique[UserDetails.Username]' );
+		$this->form_validation->set_rules ( 'Email', 'E-mail', 'trim|valid_email|required|is_unique[UserDetails.Email]' );
+		$this->form_validation->set_message('is_unique', 'An account with this %s is present');
 		
 		$templateData = array (
-				'chainDropdown' => $hotelChaindropdownData,
-				'hotelDropdown' => $hoteldropdownData,
-				'title' => "Add New Product",
+				
+				'title' => "Add New User",
 				'Username' => "HardCodedUser",
-				'viewName' => "addContact_view" 
+				'viewName' => "addUser_view" 
 		);
 		
 		if ($this->form_validation->run () == FALSE) {
@@ -90,22 +68,15 @@ class Users extends CI_Controller {
 
 		else {
 			
-			$this->load->model ( 'contactsmodel' );
+			$this->load->model ( 'usersmodel' );
+		
+			$UserDetails = $this->input->post ();
+			$UserDetails['IsReset']=1;
+			$UserDetails['PasswordHash']=NULL;
 			
-			$ContactDetails = $this->input->post ();
 			
-			foreach ($ContactDetails as $key=>$field){
-				if (empty($field)){
-					
-					unset($ContactDetails[$key]);
-				}
-				
-			}
-			
-			print_r($ContactDetails);
-			
-			if ($insertedID = $this->contactsmodel->addContact($ContactDetails)) {
-				redirect ( '/contacts', 'refresh' );
+			if ($insertedID = $this->usersmodel->addUser($UserDetails)) {
+				redirect ( '/users', 'refresh' );
 			} else {
 				$this->load->view ( '/includes/template', $templateData );
 			}

@@ -83,11 +83,16 @@ class Hotels extends CI_Controller {
 		else {
 			$this->load->model ( 'hoteldetailsmodel' );
 				
-			$HotelDetail=array(
-					'HotelName'=>$this->input->post('HotelName'),
-					'Address'=>$this->input->post('Address'),
-					'HotelChainID'=>$this->input->post('HotelChainID')
-			);
+			$HotelDetail = $this->input->post ();
+				
+			foreach ($HotelDetail as $key=>$field){
+				if (empty($field)){
+						
+					unset($HotelDetail[$key]);
+				}
+			
+			}
+			
 			if ($insetedID = $this->hoteldetailsmodel->addHotel ( $HotelDetail )) {
 				redirect('/hotels/view/'.$insetedID, 'refresh');
 	
