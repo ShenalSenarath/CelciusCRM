@@ -89,8 +89,9 @@ body {
 						</li>
 						<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
 						<li class="divider"></li>
-						<li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i>
-								Logout</a></li>
+						<li><?php echo anchor('secure/logout', '<i class="fa fa-sign-out fa-fw"></i>
+								Logout');?>
+						</li>
 					</ul> <!-- /.dropdown-user --></li>
 				<!-- /.dropdown -->
 			</ul>

@@ -24,96 +24,77 @@ class Secure extends CI_Controller {
 				$userCredentials = $this->usersmodel->getPasswordHashByEmail ( $loginInfo ['Username'] );
 				$inputPasswordHash = do_hash ( $loginInfo ['Password'] );
 				
-				
-				
-				
 				try {
-					if (!(count($userCredentials)>0)){
+					if (! (count ( $userCredentials ) > 0)) {
 						
-						throw new Exception('No such account exists. Please try again.');
-						
+						throw new Exception ( 'No such account exists. Please try again.' );
 					}
 					
 					if ($userCredentials [0]->IsReset) {
-						throw new Exception('Your account is not activated.<br> Check your E-mails for the activation link.');
+						throw new Exception ( 'Your account is not activated.<br> Check your E-mails for the activation link.' );
 					}
 					
 					if (($userCredentials [0]->PasswordHash) == ($inputPasswordHash)) {
-						$this->createLoggedInSession($userCredentials[0]->Username, $userCredentials[0]->UserGroup);
-						redirect('', 'refresh');
+						$this->createLoggedInSession ( $userCredentials [0]->Username, $userCredentials [0]->UserGroup );
+						redirect ( '', 'refresh' );
 					} else {
-						throw new Exception('Wrong Password');
+						throw new Exception ( 'Wrong Password' );
 					}
-					$this->load->view ( 'login_view',$data );
-					
-					
+					$this->load->view ( 'login_view', $data );
 				} catch ( Exception $e ) {
 					
-					$data = array (
-							'message' => $e->getMessage()
+					$dazta = array (
+							'message' => $e->getMessage () 
 					);
-					$this->load->view ( 'login_view',$data );
+					$this->load->view ( 'login_view', $data );
 				}
 			} else {
 				
-				
-				$userCredentials = $this->usersmodel->getPasswordHashByUsername( $loginInfo ['Username'] );
+				$userCredentials = $this->usersmodel->getPasswordHashByUsername ( $loginInfo ['Username'] );
 				$inputPasswordHash = do_hash ( $loginInfo ['Password'] );
 				
-				
-				
-				
 				try {
-					if (!(count($userCredentials)>0)){
-				
-						throw new Exception('No such account exists. Please try again.');
-				
-					}
+					if (! (count ( $userCredentials ) > 0)) {
 						
+						throw new Exception ( 'No such account exists. Please try again.' );
+					}
+					
 					if ($userCredentials [0]->IsReset) {
-						throw new Exception('Your account is not activated.<br> Check your E-mails for the activation link.');
+						throw new Exception ( 'Your account is not activated.<br> Check your E-mails for the activation link.' );
 					}
-						
+					
 					if (($userCredentials [0]->PasswordHash) == ($inputPasswordHash)) {
 						
-						$this->createLoggedInSession($userCredentials[0]->Username, $userCredentials[0]->UserGroup);
-						redirect('', 'refresh');
+						$this->createLoggedInSession ( $userCredentials [0]->Username, $userCredentials [0]->UserGroup );
+						redirect ( '', 'refresh' );
 						
 					} else {
-						throw new Exception('Wrong Password');
+						throw new Exception ( 'Wrong Password' );
 					}
-					$this->load->view ( 'login_view',$data );
-						
-						
+					$this->load->view ( 'login_view', $data );
 				} catch ( Exception $e ) {
-						
+					
 					$data = array (
-							'message' => $e->getMessage()
+							'message' => $e->getMessage () 
 					);
-					$this->load->view ( 'login_view',$data );
+					$this->load->view ( 'login_view', $data );
 				}
-				
-				
 			}
 		}
 	}
 	public function logout() {
-		$this->session->sess_destroy();
-		redirect('/secure/login/', 'refresh');
+		$this->session->sess_destroy ();
+		redirect ( '/secure/login/', 'refresh' );
 	}
-	
-	private function createLoggedInSession($username,$userGroup){
-		
-		$sessionData = array(
-				'username'  => $username,
-				'userGroup'     => $userGroup,
-				'loggedIn' => TRUE
+	private function createLoggedInSession($username, $userGroup) {
+		$sessionData = array (
+				'username' => $username,
+				'userGroup' => $userGroup,
+				'loggedIn' => TRUE 
 		);
 		
-		$this->session->set_userdata($sessionData);
-		
+		$this->session->set_userdata ( $sessionData );
 	}
-	
 	private function Is_email($userInput) {
 		if (filter_var ( $userInput, FILTER_VALIDATE_EMAIL )) {
 			return true;

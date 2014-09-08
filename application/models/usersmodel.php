@@ -63,14 +63,14 @@ class UsersModel extends CI_Model {
 	
 	function getPasswordHashByUsername($Username){
 		$this->db->where('Username',$Username);
-		$this->db->select('PasswordHash,IsReset,userGroup');
+		$this->db->select('Username, PasswordHash,IsReset,UserGroup');
 		$query = $this->db->get ( 'UserDetails' );
 		return $query->result ();
 		
 	}
 	function getPasswordHashByEmail($Email){
 		$this->db->where('Email',$Email);
-		$this->db->select('PasswordHash,IsReset,userGroup');
+		$this->db->select('Username, PasswordHash,IsReset,UserGroup');
 		$query = $this->db->get ( 'UserDetails' );
 		return $query->result ();
 	}
