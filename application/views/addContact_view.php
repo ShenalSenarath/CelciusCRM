@@ -133,14 +133,7 @@
 							echo form_submit ( $bttnAttb, 'Save' );
 							?>
 						</div>
-						<?php
-							$inputAttb = array (
-									'class' => 'form-control hidden',
-									'name' => 'MobileNumber',
-									'value' => set_value ( 'MobileNumber' ),
-									'placeholder' => 'Enter personal/mobile number here' 
-							);
-							echo form_input ( $inputAttb );?>
+						
 						<?php echo form_close(); ?>
 					</div>
 				</div>

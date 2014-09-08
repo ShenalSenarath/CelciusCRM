@@ -66,26 +66,64 @@ body {
 						<h3 class="panel-title">Please login to continue</h3>
 					</div>
 					<div class="panel-body">
-						<form role="form">
-							<fieldset>
-								<div class="form-group">
-									<input class="form-control" placeholder="E-mail" name="email"
-										type="email" autofocus>
-								</div>
-								<div class="form-group">
-									<input class="form-control" placeholder="Password"
-										name="password" type="password" value="">
-								</div>
-								<div class="checkbox">
-									<label> <input name="remember" type="checkbox"
-										value="Remember Me">Remember Me
-									</label>
-								</div>
-								<!-- Change this to a button or input when using this as a form -->
-								<a href="auth/validateCredentials"
-									class="btn btn-lg btn-success btn-block">Login</a>
-							</fieldset>
-						</form>
+						<?php
+						$attributes = array (
+								'role' => 'form' 
+						);
+						echo form_open ( 'secure/login' );
+						?>
+						
+						<div class="form-group">
+							
+								
+								<?php
+								$inputAttb = array (
+										'class' => 'form-control',
+										'name' => 'Username',
+										'value' => set_value ( 'Username' ),
+										'placeholder' => 'Username or E-mail',
+										'autofocus' => NULL 
+								);
+								echo form_input ( $inputAttb );
+								echo form_error ( 'Username', '<p class="text-danger">', '</p>' );
+								?>
+						</div>
+
+						<div class="form-group">
+									
+								<?php
+								$inputAttb = array (
+										'class' => 'form-control',
+										'name' => 'Password',
+										'placeholder' => 'Password',
+										'type' => 'password',
+										'autofocus' => NULL 
+								);
+								echo form_input ( $inputAttb );
+								echo form_error ( 'Password', '<p class="text-danger">', '</p>' );
+								?>
+						</div>
+						<?php if(!(is_null($message))):?>
+						<div class="form-group">
+							<div class="alert alert-danger">
+                                <?php echo $message; ?>
+                            </div>
+						</div>	
+						<?php endif;?>
+
+
+						<div class="form-group">
+							<?php
+							$bttnAttb = array (
+									'type' => 'submit',
+									'class' => 'btn btn-lg btn-success btn-block' 
+							);
+							echo form_submit ( $bttnAttb, 'Login' );
+							?>
+						</div>
+						
+						<?php echo form_close(); ?>
+						
 					</div>
 				</div>
 			</div>
