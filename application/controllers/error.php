@@ -7,7 +7,7 @@ class Error extends CI_Controller {
 		$templateData = array (
 				
 				'title' => 'Security Error',
-				'Username' => "HardCodedUser",
+				'Username' =>  getUsername (),
 				'viewName' => "permissionerror_view" 
 		);
 		$this->load->view ( 'includes/template' ,$templateData);

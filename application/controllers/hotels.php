@@ -7,6 +7,10 @@ if (! defined ( 'BASEPATH' ))
  *This controller will be used to hotel related operations
  */
 class Hotels extends CI_Controller {
+	public function __construct() {
+		parent::__construct ();
+		checkloggedin ();
+	}
 	/**
 	 * Views all the hotels in the system
 	 */
@@ -17,7 +21,7 @@ class Hotels extends CI_Controller {
 		$templateData = array (
 				'data' => $allHotels,
 				'title' => "Hotels",
-				'Username' => "HardCodedUser",
+				'Username' =>  getUsername (),
 				'viewName' => "hotels_view" 
 		);
 		
@@ -44,7 +48,7 @@ class Hotels extends CI_Controller {
 				'roomTypes'=>$roomTypesByHotel,
 				'contacts' => $contactsByHotel,
 				'title' => ($hotelDetails [0]->HotelName) . " - Hotel",
-				'Username' => "HardCodedUser",
+				'Username' =>  getUsername (),
 				'viewName' => "hotel_view" 
 		);
 		$this->load->view ( '/includes/template', $templateData );
@@ -70,7 +74,7 @@ class Hotels extends CI_Controller {
 		$templateData = array (
 				'dropdown'=>$dropdownData,
 				'title' => "Add New Hotel",
-				'Username' => "HardCodedUser",
+				'Username' =>  getUsername (),
 				'viewName' => "addHotel_view"
 		);
 	

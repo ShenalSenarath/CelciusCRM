@@ -8,6 +8,10 @@ if (! defined ( 'BASEPATH' ))
  *         This controller will be used to contacts related operations
  */
 class RoomTypes extends CI_Controller {
+	public function __construct() {
+		parent::__construct ();
+		checkloggedin ();
+	}
 	function view($roomTypeID) {
 		$this->load->model ( 'hoteldetailsmodel' );
 		$this->load->model ( 'productTypesmodel' );
@@ -26,7 +30,7 @@ class RoomTypes extends CI_Controller {
 				'roomProducts' => $productsOfRoom,
 				'productTypes'=>$productTypes,
 				'title' => ($roomTypeDetails [0]->RoomType) ." - ".($hotelDetails[0]->HotelName) ." Hotel",
-				'Username' => "HardCodedUser",
+				'Username' =>  getUsername (),
 				'viewName' => "roomtype_view" 
 		);
 		
@@ -47,7 +51,7 @@ class RoomTypes extends CI_Controller {
 				
 				'hotelDetails' => $hotelDetails,
 				'title' => "Add Room type - " . ($hotelDetails [0]->HotelName),
-				'Username' => "HardCodedUser",
+				'Username' =>  getUsername (),
 				'viewName' => "addRoomType_view" 
 		);
 		

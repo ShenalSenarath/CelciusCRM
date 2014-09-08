@@ -2,6 +2,10 @@
 if (! defined ( 'BASEPATH' ))
 	exit ( 'No direct script access allowed' );
 class Products extends CI_Controller {
+	public function __construct() {
+		parent::__construct ();
+		checkloggedin ();
+	}
 	
 	function index() {
 		$this->load->model('producttypesmodel');
@@ -15,7 +19,7 @@ class Products extends CI_Controller {
 				'productTypes'=>$productTypes,
 				'productDetails'=>$productDetails,
 				'title' => "Products",
-				'Username' => "HardCodedUser",
+				'Username' =>  getUsername (),
 				'viewName' => "product_view"
 		);
 		
@@ -44,7 +48,7 @@ class Products extends CI_Controller {
 		$templateData = array (
 				'dropdown'=>$dropdownData,
 				'title' => "Add New Product",
-				'Username' => "HardCodedUser",
+				'Username' =>  getUsername (),
 				'viewName' => "addProduct_view" 
 		);
 		

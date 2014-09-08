@@ -8,6 +8,10 @@ if (! defined ( 'BASEPATH' ))
  *         This controller will be used to room prducts related operations
  */
 class roomProducts extends CI_Controller {
+	public function __construct() {
+		parent::__construct ();
+		checkloggedin ();
+	}
 	
 	function add($roomTypeID, $productTypeID) {
 		
@@ -47,7 +51,7 @@ class roomProducts extends CI_Controller {
 				'typeDetails' =>$productTypeDetails,
 				'productsDropdownData'=>$productsDropdownData,
 				'title' => "Add Product - " .$productTypeDetails[0]->ProductType."s - ". ($roomDetails[0]->RoomType)." - ".($hotelDetails [0]->HotelName),
-				'Username' => "HardCodedUser",
+				'Username' =>  getUsername (),
 				'viewName' => "addRoomProduct_view" 
 		);
 		

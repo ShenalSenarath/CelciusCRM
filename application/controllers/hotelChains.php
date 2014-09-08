@@ -8,6 +8,10 @@ if (! defined ( 'BASEPATH' ))
  *         This controller will be used to hotel chain related operations
  */
 class HotelChains extends CI_Controller {
+	public function __construct() {
+		parent::__construct ();
+		checkloggedin ();
+	}
 	
 	/**
 	 * Will show all the hotel chains
@@ -19,7 +23,7 @@ class HotelChains extends CI_Controller {
 		$templateData = array (
 				'data' => $allHotelChains,
 				'title' => "Hotel Chains",
-				'Username' => "HardCodedUser",
+				'Username' =>  getUsername (),
 				'viewName' => "hotelchains_view" 
 		);
 		
@@ -47,7 +51,7 @@ class HotelChains extends CI_Controller {
 				'hotels' => $hotelsByChain,
 				'contacts' => $contactsByChain,
 				'title' => ($hotelChainDetails [0]->ChainName) . " - Hotel Chain",
-				'Username' => "HardCodedUser",
+				'Username' =>  getUsername (),
 				'viewName' => "hotelchain_view" 
 		);
 		$this->load->view ( '/includes/template', $templateData );
@@ -65,7 +69,7 @@ class HotelChains extends CI_Controller {
 		$templateData = array (
 
 				'title' => "Add New Hotel Chain",
-				'Username' => "HardCodedUser",
+				'Username' =>  getUsername (),
 				'viewName' => "addHotelChain_view" 
 		);
 		

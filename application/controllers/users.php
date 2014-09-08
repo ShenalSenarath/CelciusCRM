@@ -8,6 +8,10 @@ if (! defined ( 'BASEPATH' ))
  *         This controller will be used to user details related operations
  */
 class Users extends CI_Controller {
+	public function __construct() {
+		parent::__construct ();
+		checkloggedin ();
+	}
 	/**
 	 * Views all the contacts in the system
 	 */
@@ -19,7 +23,7 @@ class Users extends CI_Controller {
 		$templateData = array (
 				'users' => $allUsers,
 				'title' => "Users",
-				'Username' => "HardCodedUser",
+				'Username' =>  getUsername (),
 				'viewName' => "users_view" 
 		);
 		
@@ -28,7 +32,7 @@ class Users extends CI_Controller {
 	
 	/**
 	 * View the details of the hotel given by the $HotelID
-	 * 
+	 *
 	 * @param int $HotelID        	
 	 */
 	function view($HotelID) {
@@ -43,7 +47,7 @@ class Users extends CI_Controller {
 				'hotelDetails' => $hotelDetails,
 				'contacts' => $contactsByHotel,
 				'title' => ($hotelDetails [0]->HotelName) . " - Hotel",
-				'Username' => "HardCodedUser",
+				'Username' =>  getUsername (),
 				'viewName' => "hotel_viewt" 
 		);
 		$this->load->view ( '/includes/template', $templateData );
@@ -53,12 +57,12 @@ class Users extends CI_Controller {
 		
 		$this->form_validation->set_rules ( 'Username', 'Username', 'trim|required|alpha_dash|is_unique[UserDetails.Username]' );
 		$this->form_validation->set_rules ( 'Email', 'E-mail', 'trim|valid_email|required|is_unique[UserDetails.Email]' );
-		$this->form_validation->set_message('is_unique', 'An account with this %s is present');
+		$this->form_validation->set_message ( 'is_unique', 'An account with this %s is present' );
 		
 		$templateData = array (
 				
 				'title' => "Add New User",
-				'Username' => "HardCodedUser",
+				'Username' =>  getUsername (),
 				'viewName' => "addUser_view" 
 		);
 		
@@ -69,13 +73,12 @@ class Users extends CI_Controller {
 		else {
 			
 			$this->load->model ( 'usersmodel' );
-		
+			
 			$UserDetails = $this->input->post ();
-			$UserDetails['IsReset']=1;
-			$UserDetails['PasswordHash']=NULL;
+			$UserDetails ['IsReset'] = 1;
+			$UserDetails ['PasswordHash'] = NULL;
 			
-			
-			if ($insertedID = $this->usersmodel->addUser($UserDetails)) {
+			if ($insertedID = $this->usersmodel->addUser ( $UserDetails )) {
 				redirect ( '/users', 'refresh' );
 			} else {
 				$this->load->view ( '/includes/template', $templateData );

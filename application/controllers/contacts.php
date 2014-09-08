@@ -19,7 +19,7 @@ class Contacts extends CI_Controller {
 		$templateData = array (
 				'contacts' => $allContacts,
 				'title' => "Contacts",
-				'Username' => "HardCodedUser",
+				'Username' =>  getUsername (),
 				'viewName' => "contacts_view" 
 		);
 		
@@ -43,7 +43,7 @@ class Contacts extends CI_Controller {
 				'hotelDetails' => $hotelDetails,
 				'contacts' => $contactsByHotel,
 				'title' => ($hotelDetails [0]->HotelName) . " - Hotel",
-				'Username' => "HardCodedUser",
+				'Username' =>  getUsername (),
 				'viewName' => "hotel_viewt" 
 		);
 		$this->load->view ( '/includes/template', $templateData );
@@ -80,7 +80,7 @@ class Contacts extends CI_Controller {
 				'chainDropdown' => $hotelChaindropdownData,
 				'hotelDropdown' => $hoteldropdownData,
 				'title' => "Add New Product",
-				'Username' => "HardCodedUser",
+				'Username' =>  getUsername (),
 				'viewName' => "addContact_view" 
 		);
 		

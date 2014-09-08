@@ -2,6 +2,10 @@
 if (! defined ( 'BASEPATH' ))
 	exit ( 'No direct script access allowed' );
 class ProductTypes extends CI_Controller {
+	public function __construct() {
+		parent::__construct ();
+		checkloggedin ();
+	}
 	function add() {
 		$this->load->library ( 'form_validation' );
 		
@@ -10,7 +14,7 @@ class ProductTypes extends CI_Controller {
 		$templateData = array (
 				
 				'title' => "Add New Product Type",
-				'Username' => "HardCodedUser",
+				'Username' =>  getUsername (),
 				'viewName' => "addProductType_view" 
 		);
 		
