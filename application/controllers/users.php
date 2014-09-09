@@ -80,9 +80,14 @@ class Users extends CI_Controller {
 			
 			if ($insertedID = $this->usersmodel->addUser ( $UserDetails )) {
 				redirect ( '/users', 'refresh' );
+				
 			} else {
 				$this->load->view ( '/includes/template', $templateData );
 			}
 		}
+	}
+	private function sendActivationMail($reciepient,$activationCode) {
+		$this->load->helper('email');
+		$this->email->sendEmailsAsSystem($reciepient,'Activation Mail Celcius CRM','');
 	}
 }

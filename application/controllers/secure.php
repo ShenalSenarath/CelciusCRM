@@ -2,6 +2,7 @@
 if (! defined ( 'BASEPATH' ))
 	exit ( 'No direct script access allowed' );
 class Secure extends CI_Controller {
+	
 	public function login() {
 		$this->load->library ( 'form_validation' );
 		
@@ -21,7 +22,7 @@ class Secure extends CI_Controller {
 			
 			if ($this->Is_email ( $loginInfo ['Username'] )) {
 				
-				$userCredentials = $this->usersmodel->getPasswordHashByEmail ( $loginInfo ['Username'] );
+			$userCredentials = $this->usersmodel->getPasswordHashByEmail ( $loginInfo ['Username'] );
 				$inputPasswordHash = do_hash ( $loginInfo ['Password'] );
 				
 				try {
@@ -35,15 +36,17 @@ class Secure extends CI_Controller {
 					}
 					
 					if (($userCredentials [0]->PasswordHash) == ($inputPasswordHash)) {
+						
 						$this->createLoggedInSession ( $userCredentials [0]->Username, $userCredentials [0]->UserGroup );
 						redirect ( '', 'refresh' );
+						
 					} else {
 						throw new Exception ( 'Wrong Password' );
 					}
-					$this->load->view ( 'login_view', $data );
+					
 				} catch ( Exception $e ) {
 					
-					$dazta = array (
+					$data = array (
 							'message' => $e->getMessage () 
 					);
 					$this->load->view ( 'login_view', $data );
@@ -71,7 +74,7 @@ class Secure extends CI_Controller {
 					} else {
 						throw new Exception ( 'Wrong Password' );
 					}
-					$this->load->view ( 'login_view', $data );
+					
 				} catch ( Exception $e ) {
 					
 					$data = array (
@@ -102,7 +105,29 @@ class Secure extends CI_Controller {
 			return false;
 		}
 	}
+	public function changePassword(){
+		
+		$this->load->library ( 'form_validation' );
+		
+		$this->form_validation->set_rules ( 'CurrentPassword', 'Current password', 'trim|required' );
+		$this->form_validation->set_rules ( 'NewPassword', 'New password', 'trim|required' );
+		$this->form_validation->set_rules ( 'ConfirmNew', 'Confirmation', 'matches[NewPassword]|trim|required' );
+		$viewData=array(
+			'username'=>getUsername(),	
+			'message'=>NULL
+		);
+		if ($this->form_validation->run () == FALSE) {
+			$this->load->view ( 'changePassword_view',$viewData );
+		}
+		
+		$userCredentials = $this->usersmodel->getPasswordHashByUsername ( getUsername() );
+		
+		
+		
+	}
+	
 	public function createPassword() {
+		
 	}
 }
 
